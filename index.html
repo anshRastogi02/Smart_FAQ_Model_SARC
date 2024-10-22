@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Saras AI Institute</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #fff;
+            
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            height: 40px;
+        }
+        .faq-categories{
+            background-color: #f0f0f0c2;
+            padding: 10px;
+            border-radius: 50px;
+            
+        }
+        .faq-categories button.active {
+    background-color: #eb6d47;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    color: white;
+}
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .apply-now {
+            background-color: #F4FF81;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight:500;
+        }
+
+        main {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #FF6F42;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        input[type="text"] {
+            width: 400px;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #FF6F42;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d4b1a7;
+        }
+
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            margin-left: 3rem;
+            width: 90%;
+        }
+
+        .faq-categories button {
+            background-color: #73727100;
+            padding: 10px 20px;
+
+            border: none;
+            color: rgb(8, 8, 8);
+            border-radius: 20px;
+            margin: 0 10px;
+            cursor: pointer;
+    
+        }
+
+        .faq-categories button:hover {
+            background-color: #ddbaaf;
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 50px ;
+            
+        }
+
+        .faq-section h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .faq-item {
+            background-color: #f9f9f900;
+            padding: 30px;
+            border-radius: 50px;
+            border:2px;
+
+            margin-bottom: 15px;
+            border:1px solid #6666668c;
+        }
+
+        .faq-item h3 {
+            font-size: 18px;
+            margin: 0;
+            font-weight:bold;
+        }
+
+        .faq-item p {
+            margin-top: 10px;
+            font-weight: 200;
+            font-size:15px;
+            color: #666;
+        }
+        .faqc{
+            margin-left: 10%;
+            font-size: 4rem;
+            font-weight: bolder;
+        }
+        .faqc2{
+           color: black;
+        }
+        .f3{
+            padding-left: 12rem;
+            padding-right: 12rem;
+            width: ;
+        }
+        .aa{
+            font-weight: 100;
+        }
+        .loggo{
+            width: 14%;
+            height: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./Logo.png" class="loggo" alt="Saras AI Institute Logo">
+        <nav>
+            <a class="aa" href="#">Home</a>
+            <a class="aa" href="#">Programs</a>
+            <a class="aa" href="#">Admissions</a>
+            <a class="aa" href="#">About us</a>
+            <a class="aa" href="#">FAQ</a>
+            <a class="aa" href="#">Contact us</a>
+        </nav>
+        <a href="#" class="apply-now">Apply Now</a>
+    </header>
+
+    <main>
+        <h1 class="faqc"><span class="faqc2">Frequently Asked </span>Questions</h1>
+        <p class="f3">Whether you're a prospective student looking for program details, a parent seeking information, or a current student with inquiries about your studies, we're here to help.</p>
+
+        <!-- Search Bar Section -->
+        <div class="search-bar">
+            <input type="text" id="search-query" placeholder="Enter your question..." onkeydown="handleKeyDown(event)">
+            <button onclick="searchFAQ()">Search</button>
+        </div>
+
+        <!-- FAQ Categories -->
+        <div class="faq-categories">
+            <button onclick="showFAQ('Admissions')">Admissions</button>
+            <button onclick="showFAQ('Curriculum and Faculty')">Curriculum and Faculty</button>
+            <button onclick="showFAQ('Accreditation & Recognition')">Accreditation & Recognition</button>
+            <button onclick="showFAQ('Career Services')">Career Services</button>
+            <button onclick="showFAQ('Tuition fee and Scholarships')">Tuition & Scholarships</button>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section" id="faq-section">
+            <!-- FAQ items will be injected here -->
+        </div>
+    </main>
+
+    <script>
+        // FAQ data as provided in the JSON structure
+        const faqData = {
+            "Admissions": [
+                {
+                    "question": "What is the process for admission into Saras AI Institute?",
+                    "answer": "The admission process at Saras AI Institute typically involves submitting the online application form along with necessary details, followed by a quick pre-Enrollment assessment to evaluate your candidature based on your personal traits and basic communication skills in English."
+                },
+                {
+                    "question": "Is there an application fee for applying to Saras AI Institute?",
+                    "answer": "There is no application fee for applying to any program at Saras"
+                },
+                {
+                    "question": "What is pre-enrollment assessment test? How do I prepare for it?",
+                    "answer": "It is a fully online assessment which takes less than 15 minutes. It is designed to evaluate your personal traits and basic English communication skills. You can take it at the time of filling out the application. It does not require any specific preparation"
+                },
+                {
+                    "question": "Are there any specific requirements or prerequisites for admission into the programs?",
+                    "answer": "To be a successful professional in AI, you need to possess basic mathematical proficiency - which can be demonstrated by your math scores in high school or beyond. At Saras, you learn with global peers and faculties and should possess basic communication skills in English. These make up for the basic eligibility criteria."
+                },
+                {
+                    "question": "When is the deadline for submitting the application?",
+                    "answer": "The deadline for submitting applications is 5th August 2024"
+                }
+            ],
+            "Curriculum and Faculty": [
+                {
+                    "question": "What is the curriculum like at Saras AI Institute?",
+                    "answer": "The curriculum at Saras AI Institute helps impart essential technical as well as human skills. We have designed a role-based curriculum that prepares students for one of these in-demand roles: AI/ML Engineer; Data Scientist; Gen AI Engineer."
+                },
+                {
+                    "question": "What does the program structure look like, and how is the curriculum delivered?",
+                    "answer": "Each year is divided into 5 semesters which last for 8 weeks each. Our programs feature a mix of recorded and live sessions, allowing for flexibility in learning."
+                },
+                {
+                    "question": "Can you provide more details about the role-based curriculum feature and how it benefits students?",
+                    "answer": "Our role-based curriculum is designed to provide targeted training and develop specialized skills in students that are highly relevant to their desired job-roles from day one."
+                },
+                {
+                    "question": "Do you also conduct LIVE sessions?",
+                    "answer": "Live sessions are conducted regularly to supplement the recorded content and provide opportunities for interactive learning and Q&A sessions."
+                },
+                {
+                    "question": "Can I transfer credits earned at other universities to Saras AI Institute?",
+                    "answer": "Yes, we evaluate the course that you have taken, if it overlaps with our curriculum and is relevant in today's time, we offer the flexibility of transferring credits."
+                },
+                {
+                    "question": "Who are the faculty members at Saras AI Institute?",
+                    "answer": "The faculty at Saras AI Institute consists of industry professionals who bring the most relevant skills and mentorship for the students to help them prepare for exactly what is needed to succeed in the job roles they are preparing for."
+                },
+                {
+                    "question": "Can I connect with mentors outside of class?",
+                    "answer": "Yes, we encourage mentorship and provide opportunities for students to connect with mentors outside of class through live sessions as well as 24x7 mentor support."
+                }
+            ],
+            "Accreditation & Recognition":[
+      {
+         "question":"Is Saras AI Institute accredited?",
+         "answer":"No, we are not accredited yet. This is our first Enrollment cycle and there is a minimum period before an institute can get accredited. However, we do follow the highest standards in terms of the curriculum and pedagogy for our students to become the top AI professionals"
+      },
+      {
+         "question":"Are the degree programs recognised by the government? ",
+         "answer":"Yes, we are a state-approved degree granting institute based in the United States. "
+      },
+      {
+         "question":"Do employers require an accredited degree? ",
+         "answer":" An accredited degree is not an absolute requirement from employers. We ensure our students are among the most-skilled and ready individuals to crack the best of jobs"
+      }
+   ],
+   "Career Services":[
+      {
+         "question":"Does Saras AI Institute offer employment support?",
+         "answer":"Yes, we provide comprehensive employment support including job placement services, resume building workshops, and interview preparation."
+      },
+      {
+         "question":"Does Saras have partnerships with employers? ",
+         "answer":"Yes, we have partnered with top global companies to recruit our graduating students"
+      },
+      {
+         "question":" Does the university offer internship placement assistance?",
+         "answer":"Yes, we assist students in finding internships by connecting them with potential employers and offering guidance on applications and interviews."
+      }
+   ],
+   "Tuition fee and Scholarships":[
+      {
+         "question":"Does Saras AI Institute offer any scholarships for students? How can I apply for them? ",
+         "answer":"Yes, we offer various scholarships to eligible students based on academic merit, financial need, and other criteria. You can apply for scholarships after you're offered admission. Go ahead with filling out the application to check your eligibility."
+      },
+      {
+         "question":" What are the tuition fees for your courses?",
+         "answer":"You can find detailed information and breakdown of the fee on 'Programs' page on the website"
+      },
+      {
+         "question":"Are there any payment plans or options available for tuition fees? ",
+         "answer":"Yes, we offer flexible payment plans to help students manage their tuition fees. At Saras AI Institute, you can pay your annual tuition fees in 5 installments, before the commencement of every semester."
+      },
+      {
+         "question":"Can I avail financial aid? ",
+         "answer":"You currently can't get a federal aid for Saras AI Institute's programs. However, we are partnering with lenders who can help facilitate a loan to help pay the tuition."
+      }
+   ]
+            // Similarly add other categories...
+        };
+
+        // Function to display FAQ section based on the selected category
+        function showFAQ(category) {
+            const faqSection = document.getElementById('faq-section');
+            faqSection.innerHTML = ''; // Clear existing FAQs
+            const selectedCategory = faqData[category];
+            
+            selectedCategory.forEach(item => {
+                const faqItem = document.createElement('div');
+                faqItem.classList.add('faq-item');
+                faqItem.innerHTML = `
+                    <h3>${item.question}</h3>
+                    <p>${item.answer}</p>
+                `;
+                faqSection.appendChild(faqItem);
+            });
+        }
+
+
+
+        // Function to display FAQ section based on the selected category and highlight the active button
+function showFAQ(category) {
+    const faqSection = document.getElementById('faq-section');
+    faqSection.innerHTML = ''; // Clear existing FAQs
+    const selectedCategory = faqData[category];
+    
+    selectedCategory.forEach(item => {
+        const faqItem = document.createElement('div');
+        faqItem.classList.add('faq-item');
+        faqItem.innerHTML = `
+            <h3>${item.question}</h3>
+            <p>${item.answer}</p>
+        `;
+        faqSection.appendChild(faqItem);
+    });
+
+    // Highlight the active button
+    const buttons = document.querySelectorAll('.faq-categories button');
+    buttons.forEach(button => {
+        if (button.textContent === category) {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
+}
+
+// Set "Admissions" as the default section when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    showFAQ('Admissions');
+});
+
+
+        // Optional: Implement search functionality
+        function searchFAQ() {
+            const query = document.getElementById('search-query').value.toLowerCase();
+            const faqSection = document.getElementById('faq-section');
+            faqSection.innerHTML = ''; // Clear existing FAQs
+
+            for (const category in faqData) {
+                const categoryData = faqData[category];
+
+                categoryData.forEach(item => {
+                    if (item.question.toLowerCase().includes(query) || item.answer.toLowerCase().includes(query)) {
+                        const faqItem = document.createElement('div');
+                        faqItem.classList.add('faq-item');
+                        faqItem.innerHTML = `
+                            <h3>${item.question}</h3>
+                            <p>${item.answer}</p>
+                        `;
+                        faqSection.appendChild(faqItem);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
