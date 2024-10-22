@@ -60,6 +60,7 @@ The backend will be available at `http://127.0.0.1:8000`.
 ### 2. Open the Frontend
 
 Open the `index.html` file in your browser. Make sure the FastAPI server is running, as the frontend fetches results from `http://127.0.0.1:8000/search`.
+![FAQ_Module_IMAGE][Screenshot from 2024-10-22 23-00-29](https://github.com/user-attachments/assets/36108b6b-55d0-4aa9-902f-eac036b0f6fe)
 
 ## Explanation
 
