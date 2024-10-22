@@ -9,8 +9,6 @@ This repository contains a simple FAQ search functionality using [FastAPI](https
 - [Project Structure](#project-structure)
 - [Running the Application](#running-the-application)
 - [Explanation](#explanation)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
@@ -60,7 +58,7 @@ The backend will be available at `http://127.0.0.1:8000`.
 ### 2. Open the Frontend
 
 Open the `index.html` file in your browser. Make sure the FastAPI server is running, as the frontend fetches results from `http://127.0.0.1:8000/search`.
-![FAQ_Module_IMAGE][Screenshot from 2024-10-22 23-00-29](https://github.com/user-attachments/assets/36108b6b-55d0-4aa9-902f-eac036b0f6fe)
+![Screenshot from 2024-10-22 23-00-29](https://github.com/user-attachments/assets/36108b6b-55d0-4aa9-902f-eac036b0f6fe)
 
 ## Explanation
 
@@ -79,11 +77,5 @@ This application consists of two components:
 1. The **backend** loads a predefined set of FAQ questions and their answers, embedding them using **Sentence-BERT**.
 2. When a user submits a search query, the backend compares the query to the FAQ embeddings and returns the most relevant results using **cosine similarity**.
 3. The **frontend** displays the results dynamically, with each FAQ's section, question, answer, and similarity score.
-
-## Contributing
-
-Feel free to contribute by submitting a pull request. Please ensure that your changes are well-tested.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+![Screenshot from 2024-10-22 23-38-16](https://github.com/user-attachments/assets/003871af-147e-4890-aebb-dd62ac465653)
+![Screenshot from 2024-10-22 23-37-42](https://github.com/user-attachments/assets/cbd25a56-dbf1-4d17-a5c2-2ccb31dcb664)
