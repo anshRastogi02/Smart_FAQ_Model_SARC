@@ -341,7 +341,8 @@
                 faqItem.classList.add('faq-item');
                 faqItem.innerHTML = `
                     <h3>${item.question}</h3>
-                    <p>${item.answer}</p>
+                    <p>${item.answer}</p>a
+                    <p>${item.score}</p>a
                 `;
                 faqSection.appendChild(faqItem);
             });
@@ -381,29 +382,47 @@ document.addEventListener('DOMContentLoaded', () => {
     showFAQ('Admissions');
 });
 
-
-        // Optional: Implement search functionality
-        function searchFAQ() {
-            const query = document.getElementById('search-query').value.toLowerCase();
-            const faqSection = document.getElementById('faq-section');
-            faqSection.innerHTML = ''; // Clear existing FAQs
-
-            for (const category in faqData) {
-                const categoryData = faqData[category];
-
-                categoryData.forEach(item => {
-                    if (item.question.toLowerCase().includes(query) || item.answer.toLowerCase().includes(query)) {
-                        const faqItem = document.createElement('div');
-                        faqItem.classList.add('faq-item');
-                        faqItem.innerHTML = `
-                            <h3>${item.question}</h3>
-                            <p>${item.answer}</p>
-                        `;
-                        faqSection.appendChild(faqItem);
-                    }
-                });
-            }
+    async function searchFAQ() {
+        const query = document.getElementById('search-query').value;
+        
+        if (!query) {
+            alert("Please enter a query!");
+            return;
         }
+
+        const faqSection = document.getElementById('faq-section');
+        faqSection.innerHTML = ''; // Clear existing FAQs
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query })  // Send the query to the FastAPI backend
+            });
+
+            const data = await response.json();
+
+            if (data.results && data.results.length > 0) {
+                data.results.forEach(result => {
+                    const faqItem = document.createElement('div');
+                    faqItem.classList.add('faq-item');
+                    faqItem.innerHTML = `
+                        <h3><strong>Question:</strong> ${result.question}</h3>
+                        <p><strong>Answer:</strong> ${result.answer}</p>
+                    `;
+                    faqSection.appendChild(faqItem);  // Append each search result to the FAQ section
+                });
+            } else {
+                faqSection.innerHTML = '<p>No results found.</p>';
+            }
+        } catch (error) {
+            console.error('Error fetching search results:', error);
+            faqSection.innerHTML = '<p>Error fetching results. Please try again later.</p>';
+        }
+    }
+
     </script>
 </body>
 </html>
